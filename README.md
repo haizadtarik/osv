@@ -1,5 +1,19 @@
 ## Automatic fault interpretation with optimal surface voting
 
+### Updated to run with Docker
+#### To run the code in a Docker container, follow these steps:
+1. Build the Docker image: `docker build -t osv .`
+2. Run the Docker container: `docker run -v <DATA_FOLDER_PATH>:/app/data osv`
+
+The data folder should contain the following files:
+- 3d/f3d:
+  - `xs.dat`
+
+To run on different data, modify the `utils.py` dimensions on line 41:
+  ```python
+  n1,n2,n3 = 100,400,420
+  ```
+
 #### This work will be presented at the 2018 SEG annual meeting:
 
 #### Presentation Date and Time: October 17, 2018 from 8:30 AM to 8:55 AM

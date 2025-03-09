@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Where is the OSV? (Where is your build.xml?)
-export OSV_HOME=../../../osv
+export OSV_HOME=/app
 # If Mac OS X, which version of Java should we use?
 export JAVA_VERSION=1.8.0
 
@@ -12,7 +12,7 @@ $OSV_HOME/libs/ipf.jar:\
 $OSV_HOME/libs/edu-mines-jtk-1.0.0.jar:\
 $OSV_HOME/libs/gluegen-rt.jar:\
 $OSV_HOME/libs/jogl-all.jar:\
-$OSV_HOME/libs/jythonlib.jar:\
+/opt/jython/jython.jar:\
 $OSV_HOME/build/classes:\
 .
 
@@ -20,9 +20,11 @@ $OSV_HOME/build/classes:\
 # Modify these flags and properties as necessary for your system.
 
 java -server -d64 -ea -Xmx18g \
+-Djava.awt.headless=true \
 -Djava.library.path=$JAVA_LIBRARY_PATH \
 -Djava.util.logging.config.file=$HOME/.java_logging_config \
 -Dpython.cachedir.skip=false \
 -Dpython.cachedir=/tmp/cachedir \
-org.python.util.jython $*
+org.python.util.jython "$@"
+
 
