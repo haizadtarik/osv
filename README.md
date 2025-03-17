@@ -10,7 +10,8 @@ The data folder should contain the following structure and files:
 <DATA_FOLDER_PATH>
   |-- 3d
     |-- f3d
-      |-- xs.dat
+      |-- xs.dat # seismic input data
+      |-- ep.dat # unet output with faults
 ```
 
 To run on different data, modify the `utils.py` dimensions on line 41:
