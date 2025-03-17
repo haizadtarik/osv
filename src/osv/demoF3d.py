@@ -35,9 +35,6 @@ ft2file = "ft2"
 ft3file = "ft3"
 gwfile = "gw"
 
-pngDir = getPngDir()
-pngDir = None
-plotOnly = True
 plotOnly = False
 # These parameters control the scan over fault strikes and dips.
 # See the class FaultScanner for more information.
@@ -47,7 +44,7 @@ sigmaPhi,sigmaTheta=8,8
 
 
 def main(args):
-  goPlanar()
+  # goPlanar()
   goFaultOrientScan()
   goSurfaceVoting()
   goFaultSurfaces()
@@ -59,7 +56,7 @@ def main(args):
 # computes seismic planarity as an input fault attribute
 def goPlanar():
   print "compute seismic planarity..."
-  gx = readImage3D(gxfile)
+  gx = readImage3DL(gxfile)
   if not plotOnly:
     lof = LocalOrientFilter(2,1,1)
     u1 = zerofloat(n1,n2,n3)
@@ -73,7 +70,7 @@ def goPlanar():
     print max(ep)
     writeImage(epfile,ep)
   else:
-    ep = readImage3D(epfile) # computed planarity
+    ep = readImage3DL(epfile) # computed planarity
   # plot3(gx)
   # ep = pow(ep,8)
   # plot3(gx,sub(1,ep),cmin=0.25,cmax=1.0,cmap=jetRamp(1.0),
@@ -82,8 +79,8 @@ def goPlanar():
 # approximately estimates fault orientations
 def goFaultOrientScan():
   print "scan for approximate fault orientations..."
-  gx = readImage3D(gxfile) # seismic
-  ep = readImage3D(epfile) # computed planarity
+  gx = readImage3DL(gxfile) # seismic
+  ep = readImage3DL(epfile) # computed planarity
   fos = FaultOrientScanner3(sigmaPhi,sigmaTheta)
   if not plotOnly:
     fe,fp,ft = fos.scan(minPhi,maxPhi,minTheta,maxTheta,ep)
@@ -108,7 +105,7 @@ def goFaultOrientScan():
 # computes voting surfaces and a final voting score map
 def goSurfaceVoting():
   print "optimal surface voting..."
-  gx = readImage3D(gxfile)
+  gx = readImage3DL(gxfile)
   gx = gain(gx)
   osv = OptimalSurfaceVoter(10,20,30)
   if not plotOnly:
@@ -125,7 +122,7 @@ def goSurfaceVoting():
     fv = readImage3D(fvfile)
     vp = readImage3D(vpfile)
     vt = readImage3D(vtfile)
-  ep = readImage3D(epfile)
+  ep = readImage3DL(epfile)
   ep = sub(1,pow(ep,8))
   # plot3(gx,ep,cmin=0.25,cmax=1.0,cmap=jetRamp(1.0),
   #     clab="Planarity",png="ep")
@@ -139,7 +136,7 @@ def goSurfaceVoting():
 # construct fault surfaces
 def goFaultSurfaces():
   print "construct fault surfaces..."
-  gx = readImage3D(gxfile)
+  gx = readImage3DL(gxfile)
   gx = gain(gx)
   if not plotOnly:
     osv = OptimalSurfaceVoter(10,20,30)

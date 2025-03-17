@@ -38,7 +38,7 @@ def setupForSubset(name):
     print "setupForSubset: f3d"
     pngDir = _pngdir+"3d/f3d/"
     seismicDir = _datdir+"3d/f3d/"
-    n1,n2,n3 = 100,400,420
+    n1,n2,n3 = 128,128,128 # 100,400,420
     d1,d2,d3 = 1.0,1.0,1.0 
     #j1,j2,j3 = 344,0,0
     #d1,d2,d3 = 0.004,0.025,0.024999 # (s,km,km)

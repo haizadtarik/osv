@@ -11,8 +11,7 @@
 #*.ear
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-/data/3d/f3d/*.dat
-!/data/3d/f3d/xs.dat
+*.dat
 #/src
 #/build
 #/libs
