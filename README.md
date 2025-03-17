@@ -5,9 +5,13 @@
 1. Build the Docker image: `docker build -t osv .`
 2. Run the Docker container: `docker run -v <DATA_FOLDER_PATH>:/app/data osv`
 
-The data folder should contain the following files:
-- 3d/f3d:
-  - `xs.dat`
+The data folder should contain the following structure and files:
+```
+<DATA_FOLDER_PATH>
+  |-- 3d
+    |-- f3d
+      |-- xs.dat
+```
 
 To run on different data, modify the `utils.py` dimensions on line 41:
   ```python
