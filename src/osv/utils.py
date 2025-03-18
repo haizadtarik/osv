@@ -34,11 +34,22 @@ def setupForSubset(name):
     d1,d2 = 1,1 # (s,km/s)
     f1,f2 = 0,0
     s1,s2,s3 = Sampling(n1,d1,f1),Sampling(n2,d2,f2),Sampling(n2,d2,f2)
+  elif name=="unet":
+    print "setupForSubset: unet"
+    pngDir = _pngdir
+    seismicDir = _datdir
+    n1,n2,n3 = 128,128,128
+    d1,d2,d3 = 1.0,1.0,1.0 
+    #j1,j2,j3 = 344,0,0
+    #d1,d2,d3 = 0.004,0.025,0.024999 # (s,km,km)
+    #f1,f2,f3 = 0.472,0.0,0.0 # = 0.000,0.000,0.000
+    f1,f2,f3 = 0.0,0.0,0.0 # = 0.000,0.000,0.000
+    s1,s2,s3 = Sampling(n1,d1,f1),Sampling(n2,d2,f2),Sampling(n3,d3,f3)
   elif name=="f3d":
     print "setupForSubset: f3d"
     pngDir = _pngdir+"3d/f3d/"
     seismicDir = _datdir+"3d/f3d/"
-    n1,n2,n3 = 128,128,128 # 100,400,420
+    n1,n2,n3 = 100,400,420
     d1,d2,d3 = 1.0,1.0,1.0 
     #j1,j2,j3 = 344,0,0
     #d1,d2,d3 = 0.004,0.025,0.024999 # (s,km,km)

@@ -47,6 +47,6 @@ ENV OSV_HOME=/app/
 ENV CLASSPATH=/app/libs/*:/app/build/classes:.
 
 WORKDIR /app/src/osv
-CMD ["./jy", "demoF3d.py"]
+CMD ["./jy", "runUnet.py"]
 
     
